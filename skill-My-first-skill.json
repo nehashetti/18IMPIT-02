@@ -1,0 +1,518 @@
+{
+  "intents": [
+    {
+      "intent": "yesno",
+      "examples": [
+        {
+          "text": "yes"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "hi",
+      "examples": [
+        {
+          "text": "hi"
+        },
+        {
+          "text": "hello"
+        },
+        {
+          "text": "good morning"
+        }
+      ],
+      "description": "greeting"
+    },
+    {
+      "intent": "quantity",
+      "examples": [
+        {
+          "text": "3"
+        },
+        {
+          "text": "1"
+        },
+        {
+          "text": "2"
+        }
+      ],
+      "description": "takes quantity"
+    },
+    {
+      "intent": "location",
+      "examples": [
+        {
+          "text": "hyderabad"
+        },
+        {
+          "text": "secundrabad"
+        },
+        {
+          "text": "lb nagar"
+        }
+      ],
+      "description": "receives location"
+    },
+    {
+      "intent": "searchmedicine",
+      "examples": [
+        {
+          "text": "do you have masks"
+        },
+        {
+          "text": "do u have sanitisers"
+        },
+        {
+          "text": "do u have handwash"
+        },
+        {
+          "text": "do u have tablets"
+        }
+      ],
+      "description": "searches medicines"
+    },
+    {
+      "intent": "order",
+      "examples": [
+        {
+          "text": "please give me 2 masks"
+        },
+        {
+          "text": "please give me a handwash"
+        },
+        {
+          "text": "do u have masks"
+        },
+        {
+          "text": "please give me 3 tablets"
+        }
+      ],
+      "description": "order"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "order",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "online payment",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "medicine",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "comblifalm",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "cough syrup",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "crocin",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "dolo",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "quantity",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "2 strips",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "1 strip",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "anything",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "no",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "yes'",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "greeting",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "good morning sir",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "what do you want?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_9_1590401676015",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1590401676022",
+      "previous_sibling": "handler_8_1590401676021"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_9_1590401676015",
+      "context": {
+        "order": "#order"
+      },
+      "conditions": "#order",
+      "event_name": "input",
+      "dialog_node": "handler_8_1590401676021"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "okay,checking,how many do you want?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1590402872972",
+      "event_name": "focus",
+      "dialog_node": "handler_7_1590402872979",
+      "previous_sibling": "handler_10_1590402872979"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1590402872972",
+      "context": {
+        "quantity": "#quantity"
+      },
+      "conditions": "#quantity",
+      "event_name": "input",
+      "dialog_node": "handler_10_1590402872979"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1590401185100",
+      "variable": "$quantity",
+      "dialog_node": "slot_4_1590402872972",
+      "previous_sibling": "slot_9_1590401676015"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1590401185100",
+      "variable": "$quantity",
+      "dialog_node": "slot_6_1590403582914",
+      "previous_sibling": "slot_4_1590402872972"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1590401185100",
+      "variable": "$order",
+      "dialog_node": "slot_1_1590403956660",
+      "previous_sibling": "slot_6_1590403582914"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1590401185100",
+      "variable": "$order",
+      "dialog_node": "slot_9_1590401676015",
+      "previous_sibling": "slot_9_1590401492488"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_4_1590401185100",
+      "variable": "$yesno",
+      "dialog_node": "slot_10_1590404076454",
+      "previous_sibling": "slot_1_1590403956660"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1590401185100",
+      "variable": "$yesno",
+      "dialog_node": "slot_4_1590404334554",
+      "previous_sibling": "slot_10_1590404076454"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1590401185100",
+      "variable": "$location",
+      "dialog_node": "slot_9_1590401492488"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "placed the order tq"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_6_1590403582914",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1590403582925",
+      "previous_sibling": "handler_10_1590403582925"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_6_1590403582914",
+      "context": {
+        "quantity": "#quantity"
+      },
+      "conditions": "#quantity",
+      "event_name": "input",
+      "dialog_node": "handler_10_1590403582925"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "thank you"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1590404334554",
+      "event_name": "focus",
+      "dialog_node": "handler_7_1590404334558",
+      "previous_sibling": "handler_2_1590404334558"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1590404334554",
+      "context": {
+        "yesno": "#yesno"
+      },
+      "conditions": "#yesno",
+      "event_name": "input",
+      "dialog_node": "handler_2_1590404334558"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "tell me your location"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_9_1590401492488",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1590401492521",
+      "previous_sibling": "handler_10_1590401492521"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_9_1590401492488",
+      "context": {
+        "location": "#location"
+      },
+      "conditions": "#location",
+      "event_name": "input",
+      "dialog_node": "handler_10_1590401492521"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "will u pay online?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_1_1590403956660",
+      "event_name": "focus",
+      "dialog_node": "handler_7_1590403956665",
+      "previous_sibling": "handler_6_1590403956665"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_1_1590403956660",
+      "context": {
+        "order": "@order"
+      },
+      "conditions": "@order",
+      "event_name": "input",
+      "dialog_node": "handler_6_1590403956665"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "okay placing the order,tq"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_10_1590404076454",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1590404076457",
+      "previous_sibling": "handler_1_1590404076457"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "placed the order thank you"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_10_1590404076454",
+      "conditions": "#yesno",
+      "event_name": "filled",
+      "dialog_node": "handler_3_1590404468740",
+      "previous_sibling": "handler_2_1590404076457"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_10_1590404076454",
+      "context": {
+        "yesno": "#yesno"
+      },
+      "conditions": "#yesno",
+      "event_name": "input",
+      "dialog_node": "handler_1_1590404076457"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_4_1590401185100",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "frame",
+      "title": "order",
+      "output": {
+        "generic": []
+      },
+      "conditions": "#hi",
+      "dialog_node": "node_4_1590401185100",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. This is MedGenie,How can I help you?"
+              },
+              {
+                "text": "welcome "
+              },
+              {
+                "text": "MedGenie welcomes you"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "My first skill",
+  "language": "en",
+  "description": ""
+}
